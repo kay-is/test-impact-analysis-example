@@ -2,6 +2,10 @@ const { exec } = require("child_process")
 const jest = require("jest")
 const tia = require("./tia")
 
+// git log origin/main.. --stat
+
+console.log("argv:", process.argv)
+
 function getFilesInLatestCommit() {
   return new Promise((resolve, reject) => {
     exec("git show --pretty=%gd --stat", (error, stdOut) => {

@@ -2,7 +2,9 @@
   "name": "test-impact-analysis-example",
   "version": "1.0.0",
   "scripts": {
-    "test": "jest"
+    "tia:init": "node scripts/init-tia",
+    "test:tia": "node scripts/run-tia",
+    "test:all": "jest"
   },
   "jest": {
     "collectCoverage": true,
@@ -15,7 +17,6 @@
     "express": "^4.17.1"
   },
   "devDependencies": {
-    "git-changed-files": "^1.0.0",
     "jest": "^27.3.1"
   }
 }

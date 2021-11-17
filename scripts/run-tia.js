@@ -1,25 +1,19 @@
-const { exec } = require("child_process")
 const jest = require("jest")
 const tia = require("./tia")
 
-// git log origin/main.. --stat
-
-console.log("argv:", process.argv)
-
-function getFilesInLatestCommit() {
-  return new Promise((resolve, reject) => {
-    exec("git show --pretty=%gd --stat", (error, stdOut) => {
-      if (error) return reject(error)
-      resolve(stdOut.match(/src\/.*.js/gi).map((f) => "./" + f))
-    })
-  })
-}
-
 async function main() {
-  const affectedSourceFiles = await getFilesInLatestCommit()
   const requiredTestFiles = []
+  const allChangedFiles = JSON.parse(process.argv[2])
+  console.log("Changed files:")
+  allChangedFiles.forEach((file) => console.log(" - " + file))
+  const changedSourceFiles = allChangedFiles.filter((file) =>
+    /src\/.*.js/gi.test(file)
+  )
 
-  for (const sourceFile of affectedSourceFiles) {
+  if (changedSourceFiles.length < 1)
+    return console.log("No JS files in src directory changed. Aborted.")
+
+  for (const sourceFile of changedSourceFiles) {
     for (const testFile of Object.keys(tia)) {
       if (tia[testFile].includes(sourceFile)) requiredTestFiles.push(testFile)
     }

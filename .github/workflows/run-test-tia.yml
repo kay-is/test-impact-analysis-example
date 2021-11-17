@@ -27,4 +27,4 @@ jobs:
       - name: Install dependencies
         run: npm ci
       - name: Run tests
-        run: npm run test:tia -- "${{ step.files.outputs.all }}"
+        run: npm run test:tia -- "${{ steps.files.outputs.all }}"

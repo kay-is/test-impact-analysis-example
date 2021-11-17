@@ -1,4 +1,4 @@
-const api = require("express")()
+const express = require("express")
 
 const routes = [
   require("./route-a"),
@@ -6,6 +6,8 @@ const routes = [
   require("./route-c"),
 ]
 
-routes.forEach(({path, handler}) => api.get(path, handler))
+const api = express()
+
+routes.forEach(({ path, handler }) => api.get(path, handler))
 
 api.listen(8000, () => console.log("API running!"))

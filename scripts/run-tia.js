@@ -4,11 +4,11 @@ const tia = require("./tia")
 async function main() {
   const requiredTestFiles = []
   const allChangedFiles = JSON.parse(process.argv[2])
-  console.log("Changed files:")
-  allChangedFiles.forEach((file) => console.log(" - " + file))
   const changedSourceFiles = allChangedFiles.filter((file) =>
     /src\/.*.js/gi.test(file)
   )
+
+  console.log(changedSourceFiles)
 
   if (changedSourceFiles.length < 1)
     return console.log("No JS files in src directory changed. Aborted.")

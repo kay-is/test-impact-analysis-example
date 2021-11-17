@@ -1,4 +1,8 @@
 module.exports = {
   path: "/route-a",
-  handler: (request, res) => res.end("Route A"),
+  handler: (request, response) => {
+    setTimeout(() => {
+      response.end("Route A")
+    }, 500)
+  },
 }

@@ -1,4 +1,8 @@
 module.exports = {
   path: "/route-c",
-  handler: (request, response) => response.end("Route C")
+  handler: (request, response) => {
+    setTimeout(() => {
+      response.end("Route C")
+    }, 1000)
+  },
 }

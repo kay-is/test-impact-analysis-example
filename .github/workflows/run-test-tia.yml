@@ -32,4 +32,4 @@ jobs:
         with:
           apikey: ${{ secrets.THUNDRA_APIKEY }}
           project_id: ${{ secrets.THUNDRA_PROJECT_ID }}
-          command: npm run test:tia -- '${{ steps.files.outputs.all }}'
+          command: "npm run test:tia -- '${{ steps.files.outputs.all }}'"

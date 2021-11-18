@@ -3,6 +3,6 @@ module.exports = {
   handler: (request, response) => {
     setTimeout(() => {
       response.end("Route B")
-    }, 140)
+    }, 100)
   },
 }

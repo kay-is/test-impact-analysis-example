@@ -8,9 +8,6 @@ async function main() {
     .filter((file) => /src\/.*.js/gi.test(file))
     .map((file) => "./" + file)
 
-  if (changedSourceFiles.length < 1)
-    return console.log("No JS files in src directory changed. Aborted.")
-
   for (const sourceFile of changedSourceFiles) {
     for (const testFile of Object.keys(tia)) {
       if (tia[testFile].includes(sourceFile)) requiredTestFiles.push(testFile)

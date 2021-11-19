@@ -32,4 +32,6 @@ jobs:
         with:
           apikey: ${{ secrets.THUNDRA_APIKEY }}
           project_id: ${{ secrets.THUNDRA_PROJECT_ID }}
-          command: "npm run test:tia -- '${{ steps.files.outputs.all }}'"
+      - name: Run TIA tests
+        run: "npm run test:tia -- '${{ steps.files.outputs.all }}'"
+        if: ${{ contains(join(steps.files.outputs.all), 'src/')}}

@@ -1,12 +1,11 @@
 const jest = require("jest")
 const tia = require("./tia")
 
-const { THUNDRA_JEST_ARGUMENTS } = process.env
-
 async function main() {
   const requiredTestFiles = []
   const allChangedFiles = JSON.parse(process.argv[2])
 
+  const { THUNDRA_JEST_ARGUMENTS } = process.env
   if (THUNDRA_JEST_ARGUMENTS) {
     const thundraArgs = THUNDRA_JEST_ARGUMENTS.split(" ")
     requiredTestFiles.push(...thundraArgs)
